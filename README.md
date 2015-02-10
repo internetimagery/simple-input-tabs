@@ -15,11 +15,15 @@ Installing this plugin is really quite simple.
 
 * In the primary section of your template where you wish to add the main content, place an insert page content tag (replacing the get page content tag):
 
-	<?php insert_page_content(); ?>
+```php
+<?php insert_page_content(); ?>
+```
 
 * For any extra sections on the same page, place another tag with the title of the section in quotes. e.g.
 
-	<?php insert_page_content("sidebar"); ?>
+```php
+<?php insert_page_content("sidebar"); ?>
+```
 
 AND THAT'S IT!
 
@@ -41,7 +45,9 @@ This is equally simple:
 The Tab name, then a custom blurb and finally a toggle to turn off plugins input.
 Placed in the brackets as such:
 
+```php
 	<?php insert_page_content( TAB, BLURB, TOGGLE); ?>
+```
 
 The blurb is a custom message (written in quotes) that will be displayed as default every time the tab is opened with no content, and when clicking the magnifying glass.
 The toggle will stop allowing other plugins to modify that tabs content.
@@ -49,29 +55,37 @@ It is on unless specifically turned off with false. If you want it on, then do n
 The arguments made must be in order. So if you need to access the second or third argument without placing anything in the earlier slots just put some empty quotes "".
 Some example usages are below.
 
+```php
 	<?php insert_page_content("logo","This space holds your logo, insert the image here.",false); ?>
 	<?php insert_page_content("","Place your main content in here."); ?>
 	<?php insert_page_content("","",false); ?>
+```
 
 ### Return function:
 
 While insert_page_content() prints out the content to the page, you can also return the content back into your templates code for further processing. If no content can be found, there is a problem finding the content, or the content is empty, the following function will instead return false. To return data use the code:
 
+```php
 	<?php return_tab_content(); ?>
+```
 
 ### Dummy functions:
 
 There are a bunch of other tags made available to you purely for cosmetic reasons. I find them more concise and easier to remember. Just remember when distributing a template to include this plugin. Simply replace your current tags with the corresponding ones below:
 
+```php
 	<?php insert_page_header(); ?>
 	<?php insert_page_footer(); ?>
 	<?php insert_page_navigation(); ?>
+```
 
 ### Specific Tab requests:
 
 Here's a nifty trick. If you want to get content from a DIFFERENT page you can! Use a Slug->Tab syntax within quotes for your Tab name. For example:
 
+```php
 	<?php insert_page_content("gallery->sidebar"); ?>
+```
 
 If you omit the Tab part (eg: "gallery->") the plugin will attempt to find the main tab of that page.
 If you leave the Slug name blank and just point to the tab (eg: "->sidebar") the plugin will look for the Tab on the current page.
