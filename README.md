@@ -1,8 +1,6 @@
 # WELCOME TO SIMPLE INPUT TABS PLUGIN
 
-A plugin for Get Simple CMS. You can find up to date installation instructions at:
-
-	http://simpleinputtabs.internetimagery.com/index.html
+A plugin for Get Simple CMS. You can find up to date installation instructions at [Internetimagery](http://simpleinputtabs.internetimagery.com/index.html) and [Github](https://github.com/internetimagery/simple_input_tabs).
 
 ## Install Instructions:
 
