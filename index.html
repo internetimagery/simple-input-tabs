@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+    <title>Simple Input Tabs</title>
+    <link rel="stylesheet" href="sit.css" title="sit" type="text/css" media="screen" charset="utf-8">
+    <meta name="description" content="Get Simple CMS plugin, Simple Input Tabs. Makes adding content to different elements on your page... well... simple!" />
+    <meta name="keywords" content="get, simple, cms, input, tabs, plugin, elements, content, easy" />
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">google.load("jquery", "1");</script>
+    <script type="text/javascript" src="sit.js" charset="utf-8"></script>
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="title" class="text">
+            <a href="http://get-simple.info/download/"><div id="logo">Get Simple CMS</div></a>
+            <span style="font-size:100px;">SIMPLE INPUT TABS</span>it's actually simple
+        </div>
+
+        <div id="award">VERSION<br>#2</div>
+
+        <div><input id="togglebox" type="checkbox" checked/>Toggle Tab Style.</div>
+        <div id="toptabs"><span id="pointer"><img src="tab-arrow.png" alt="tab-arrow" width="150" height="26" /></span><ul>
+        <li><a id="begin2" class="activetab" href="#">Welcome</a></li>
+        <li><a id="setup2" href="#">Setting Up</a></li>
+        <li><a id="template2" href="#">Template Setup</a></li>
+        <li><a id="using2" href="#">Usage</a></li>
+        </ul></div>
+        <div id="edit-upper"></div>
+        <div id="editor"></div>
+        <div id="edit-lower"> body p</div>
+        <div id="button-container"><p>
+        <span><input id="begin" class="submit" type="button" name="welcome" value="Welcome"></span>
+        <span><input id="setup" class="submit" type="button" name="setup" value="Setting Up"></span>
+        <span><input id="template" class="submit" type="button" name="template" value="Template Setup"></span>
+        <span><input id="using" class="submit" type="button" name="Usage" value="Usage"></span>
+        </p></div>
+        <div id="advanced">
+        <h1 style="text-align: center;">ADVANCED USAGE</h1>
+
+        <h2>Additional functionality.</h2>
+        <p><code>insert_page_content()</code> actually accepts three arguments. The Tab name, then a custom blurb and finally a toggle to turn off plugins input. Placed in the brackets as such:<br><br>
+        <code>&lt;?php insert_page_content( TAB, BLURB, TOGGLE); ?></code><br><br>
+
+        The blurb is a custom message (written in quotes) that will be displayed as default every time the tab is opened with no content, and when clicking the magnifying glass.<br>The toggle will stop allowing other plugins to modify that tabs content. It is on unless specifically turned off with <code>false</code>. If you want it on, then do nothing.<br>The arguments made must be in order. So if you need to access the second or third argument without placing anything in the earlier slots just put some empty quotes <code>""</code>.<br>Some example usages are below.<br><br>
+<code>&lt;?php insert_page_content("logo","This space holds your logo, insert the image here.",false); ?></code><br>
+<code>&lt;?php insert_page_content("","Place your main content in here."); ?></code><br>
+<code>&lt;?php insert_page_content("","",false); ?></code><br></p>
+
+
+        <h2>Return function:</h2>
+        <p>While <code>insert_page_content()</code> prints out the content to the page, you can also return the content back into your templates code for further processing. If no content can be found, there is a problem finding the content, or the content is empty, the following function will instead return <code>false</code>. To return data use the code:<br><br><code>&lt;?php return_tab_content(); ?></code><br></p>
+
+        <h2>Dummy functions:</h2>
+        <p>There are a bunch of other tags made available to you purely for cosmetic reasons. I find them more concise and easier to remember. Just remember when distributing a template to include this plugin. Simply replace your current tags with the corresponding ones below:<br><br>
+        <code>&lt;?php insert_page_header(); ?></code><br>
+        <code>&lt;?php insert_page_footer(); ?></code><br>
+        <code>&lt;?php insert_page_navigation(); ?></code><br></p>
+
+        <h2>Specific Tab requests:</h2>
+        <p>Here's a nifty trick. If you want to get content from a DIFFERENT page you can! Use a <code>Slug->Tab</code> syntax within quotes for your Tab name. For example:<br><br>
+        <code>&lt;?php insert_page_content("gallery->sidebar"); ?></code><br><br>
+
+	If you omit the Tab part (eg: <code>"gallery->"</code>) the plugin will attempt to find the main tab of that page.<br>If you leave the Slug name blank and just point to the tab (eg: <code>"->sidebar"</code>) the plugin will look for the Tab on the current page.<br>This syntax also works when using <code>return_tab_content()</code></p>
+
+        <h2>Extra Information.</h2>
+        <p>The tab names are only allowed to contain characters, numbers, underscores, spaces and dashes. If you make a tab that includes something else, it will not show up for editing.</p>
+        <p>If you double up on Tab names you will get a warning, but will still be able to use them. Useful if you really need identical data on two sections of the web page.</p>
+        <p>Avoid using <code>||][||</code> in your website (should be easy to do... I hope...) as that barcode-looking character combination is reserved by this plugin.</p>
+        <p>This plugin is non destructive. If you choose to remove the plugin all your saved information in all tabs will remain compressed into the default single edit box with titles defining each tab.</p>
+        <p>If you venture into the plugins code (open with a text editor) you will see a few options at the top of the page. Here you can set some default configurations if you choose, before distribution.</p>
+        <p>This plugin comes with i18n language functionality out of the box with built in languages. If you would like to add your own language, then upload the additional included files and edit the language file present.</p>
+        <p>In the provided folder is a file named <code>functions.php</code>. This file is a helper for theme distributions that use this plugin. It will automatically move the plugin files to the correct location if they are placed within the Theme folder. So you can bundle all the files into one theme folder and install them all at once. To use it simply move <code>functions.php</code> out of its current location and place it in the same spot as <code>simple_input_tabs.php</code>. If you are distributing a theme with an existing <code>functions.php</code> file, then simply rename it to <code>temp.functions.php</code> and it will rename back automatically. Useful!</p>
+        <br><br><h3>Enjoy!</h3>
+        </div>
+    </div>
+</body>
+</html>
